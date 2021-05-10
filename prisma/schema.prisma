@@ -1,0 +1,180 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  OWNER
+  RIDER
+  DELIVERY
+  ADMIN
+}
+
+enum OrderStatus {
+  Pending
+  Cooking
+  Cooked 
+  PickedUp 
+  Delivered 
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  firstName String
+  lastName  String?
+  username  String    @unique
+  email     String    @unique
+  password  String
+  bio       String?
+  avatar    String?
+  adress    String?
+  expotoken String?   
+  role      Role      @default(USER)
+  photos    Photo[]
+  likes     Like[]
+  followers User[]    @relation("FollowRelation", references: [id])
+  following User[]    @relation("FollowRelation", references: [id])
+  comments  Comment[]
+  rooms     Room[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Message   Message[]
+  stores     Store[]
+  orders     Order[]
+
+}
+
+model Photo {
+  id        Int       @id @default(autoincrement())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  file      String
+  caption   String?
+  hashtags  Hashtag[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  likes     Like[]
+  comments  Comment[]
+}
+
+model Hashtag {
+  id        Int      @id @default(autoincrement())
+  hashtag   String   @unique
+  photos    Photo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  photo     Photo    @relation(fields: [photoId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  photoId   Int
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([photoId, userId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  photo     Photo    @relation(fields: [photoId], references: [id])
+  payload   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  photoId   Int
+}
+
+model Room {
+  id        Int       @id @default(autoincrement())
+  users     User[]
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  payload   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  room      Room     @relation(fields: [roomId], references: [id])
+  roomId    Int
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Store {
+  id        Int      @id @default(autoincrement())
+  name      String
+  mainimg   String
+  adress    String
+  phone     String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int    
+  minprice  Int      @default(13000)
+  riderprice  Int      @default(2000)
+  orders    Order[]
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  isPromoted Boolean @default(false)
+  promotedUntil String?
+}
+  // category: Category;
+  // ownerId:  number;
+  // owner     User[]
+  // orders    Order[];
+  // menu      Dish[];
+
+  model Product {
+    id        Int      @id @default(autoincrement())
+    photo     String
+    name      String
+    price     Int
+    description String?
+    options     String?
+    store     Store @relation(fields: [storeId], references: [id])
+    order_items Order_Item[]
+    storeId   Int
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+  }
+
+    model Order {
+    id         Int      @id @default(autoincrement())
+    total      Int
+    status     OrderStatus @default(Pending)
+    order_items Order_Item[]
+    user      User @relation(fields: [userId], references: [id])
+    userId    Int
+    store     Store @relation(fields: [storeId], references: [id])
+    storeId   Int
+    riderId   Int?
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+  }
+
+    model Order_Item {
+    id         Int      @id @default(autoincrement())
+    order      Order    @relation(fields: [orderId], references: [id])
+    orderId    Int
+    product    Product  @relation(fields: [productId], references: [id])
+    productId  Int
+    options   String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+  }

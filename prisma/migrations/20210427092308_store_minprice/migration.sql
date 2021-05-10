@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Store" ADD COLUMN     "minprice" INTEGER NOT NULL DEFAULT 13000;

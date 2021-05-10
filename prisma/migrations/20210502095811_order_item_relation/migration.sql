@@ -1,0 +1,2 @@
+-- AddForeignKey
+ALTER TABLE "Order_Item" ADD FOREIGN KEY ("productId") REFERENCES "Product"("id") ON DELETE CASCADE ON UPDATE CASCADE;

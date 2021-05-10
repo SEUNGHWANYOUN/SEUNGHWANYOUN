@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "noImplicitAny": false,
+      "noEmitOnError": true,
+      "removeComments": false,
+      "sourceMap": true,
+      "target": "es6",
+      "lib": ["es2015", "es2016", "es2017", "es2018", "es2019", "es2020"],
+      "outDir": "./built",
+
+      // module
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+
+    },
+    "include": ["./src/**/*"]
+  }
