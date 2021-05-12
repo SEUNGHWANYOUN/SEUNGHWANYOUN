@@ -34,6 +34,9 @@ export default gql`
   type Order {
     id:           Int!
     total:        Int!
+    adress:       String!
+    owner_commit: String
+    rider_commit: String
     status:       String!
     storeId:      Int!
     userId:       Int!

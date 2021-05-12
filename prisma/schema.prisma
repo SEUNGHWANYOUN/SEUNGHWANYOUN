@@ -157,6 +157,9 @@ model Store {
     model Order {
     id         Int      @id @default(autoincrement())
     total      Int
+    adress    String   
+    owner_commit String?
+    rider_commit String?
     status     OrderStatus @default(Pending)
     order_items Order_Item[]
     user      User @relation(fields: [userId], references: [id])

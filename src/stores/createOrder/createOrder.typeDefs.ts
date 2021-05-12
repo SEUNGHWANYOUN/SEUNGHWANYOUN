@@ -10,6 +10,8 @@ export default gql`
     input createOrderInput {
      storeId: Int!
      items: [createOrderItemInput],
+     owner_commit: String
+     rider_commit: String
     }
 
     input createOrderItemInput {

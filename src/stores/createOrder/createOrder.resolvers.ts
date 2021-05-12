@@ -6,7 +6,7 @@ export default{
 
     
     Mutation: {
-        createOrder: protectedResolver(async(_,{ input: {storeId, items }}, {loggedInUser})=>{
+        createOrder: protectedResolver(async(_,{ input: {storeId, items, owner_commit, rider_commit }}, {loggedInUser})=>{
             try {
             const store = await client.store.findUnique(({
                 where: {
@@ -31,6 +31,9 @@ export default{
                         storeId: store.id,
                         userId:loggedInUser.id,
                         total: orderFinalPrice,
+                        adress:loggedInUser.adress,
+                        owner_commit,
+                        rider_commit,
                     }
                 });
                 
@@ -99,6 +102,7 @@ export default{
                             productId:product.id,
                             options: JSON.stringify(orderItems),
                             orderId: order.id,
+                            
 
                         }
                     });
