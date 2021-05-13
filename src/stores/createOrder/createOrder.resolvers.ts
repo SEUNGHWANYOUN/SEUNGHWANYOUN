@@ -37,7 +37,6 @@ export default{
                     }
                 });
                 
-
                 for (const item of items) {
                     const product = await client.product.findFirst({
                         where : {
@@ -83,18 +82,18 @@ export default{
 
                                 }
                             }
+                        //DB에서 유저가 선택한 값 내용으로 변경 []배열 안으로 다시 넣어줌
+                        orderItems.push(productOption);
                         }
-                        //DB에서 유저가 선택한 값 내용으로 변경
-                        orderItems=productOption;
+                        //DB에서 유저가 선택한 값 내용으로 변경 []배열 안으로 다시 넣어줌
+                       // orderItems=[productOption];
                     }
-                    console.log("옵션 예외처리 정상");
+
 
                 }
-
-
                     //총 합산한급액
                     orderFinalPrice = orderFinalPrice + productFinalPrice;
-                    console.log(orderItems);
+                    //console.log(orderItems);
 
                     //주문한거에 맞는 메뉴내용을 만들어줘서 연결해 줍니다~
                    await client.order_Item.create({
@@ -102,10 +101,11 @@ export default{
                             productId:product.id,
                             options: JSON.stringify(orderItems),
                             orderId: order.id,
-                            
-
                         }
                     });
+
+                    //한개의 주문_아이템을 만들고 배열 초기화
+                    orderItems = [];
                  
                 }
                 
