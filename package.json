@@ -9,8 +9,7 @@
     "studio": "npx prisma studio",
     "build321": "npx tsc --build",
     "buildw": "npx tsc -w",
-    "build_start": "node built/server.js",
-    "start": "ts-node src/server --ext ts,js"
+    "start": "node built/server.js"
   },
   "repository": {
     "type": "git",
