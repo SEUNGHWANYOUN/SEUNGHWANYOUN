@@ -19,7 +19,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const apollo_server_express_1 = require("apollo-server-express");
 const schema_1 = require("./schema");
 const users_utils_1 = require("./users/users.utils");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || '5000';
 const RootSchema = apollo_server_express_1.gql `
      extend type Query {
       root: String
