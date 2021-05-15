@@ -1,0 +1,1 @@
+{"version":3,"file":"comments.resolvers.js","sourceRoot":"","sources":["../../src/comments/comments.resolvers.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,OAAO,EAAE;QACP,MAAM,EAAE,CAAC,EAAE,MAAM,EAAE,EAAE,CAAC,EAAE,EAAE,YAAY,EAAE,EAAE,EAAE;YAC1C,IAAI,CAAC,YAAY,EAAE;gBACjB,OAAO,KAAK,CAAC;aACd;YACD,OAAO,MAAM,KAAK,YAAY,CAAC,EAAE,CAAC;QACpC,CAAC;KACF;CACF,CAAC"}
