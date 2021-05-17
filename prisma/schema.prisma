@@ -36,6 +36,9 @@ model User {
   bio       String?
   avatar    String?
   adress    String?
+  adress_road      String?
+  adress_detail    String?
+
   expotoken String?   
   role      Role      @default(USER)
   photos    Photo[]

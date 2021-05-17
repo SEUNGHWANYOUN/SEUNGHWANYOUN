@@ -12,6 +12,8 @@ export default gql`
     bio: String
     avatar: String
     adress: String
+    adress_road: String
+    adress_detail: String
     expotoken: String
     role: String!
     photos: [Photo]
