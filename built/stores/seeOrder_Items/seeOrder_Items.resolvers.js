@@ -9,7 +9,7 @@ exports.default = {
         seeOrder_Items: (_, { orderId }) => client_1.default.order_Item.findMany({
             where: {
                 orderId,
-            }
+            },
         }),
     }
 };

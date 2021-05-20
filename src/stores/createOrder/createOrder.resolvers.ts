@@ -24,6 +24,8 @@ export default{
                 let orderFinalPrice = 0;
                 //유저가 선택한 값만 넣어줌
                 var orderItems = [];
+                // 정상적인 프로세스를 했는지 판단
+                let originalCheck = false;
 
                 //for문 들어가기전에 임시로 주문을 만들어줌
                 const order = await client.order.create({
@@ -44,6 +46,14 @@ export default{
                         }
                     });
                     if (!product) {
+
+                        // await client.order.delete({
+                        //     where: {
+                        //         id:order?.id,
+                        //     }
+                        //   })
+
+
                       return {
                         ok: false,
                         error: 'Product not found.',
@@ -89,26 +99,40 @@ export default{
                        // orderItems=[productOption];
                     }
 
-
                 }
                     //총 합산한급액
                     orderFinalPrice = orderFinalPrice + productFinalPrice;
                     //console.log(orderItems);
 
+       
                     //주문한거에 맞는 메뉴내용을 만들어줘서 연결해 줍니다~
-                   await client.order_Item.create({
+                    await client.order_Item.create({
                         data:{
                             productId:product.id,
                             options: JSON.stringify(orderItems),
                             orderId: order.id,
                         }
                     });
+                    originalCheck=true;
 
                     //한개의 주문_아이템을 만들고 배열 초기화
-                    orderItems = [];
-                 
+                    orderItems = [];                 
                 }
-                
+
+                //정상적인 제품이아닌 (삭제되었더나 존재하지 않는 상품들)
+                if(originalCheck!==true){
+                    await client.order.delete({
+                    where: {
+                        id:order?.id,
+                    }
+                  })
+                return{
+                    ok: false,
+                    error: "This is not a normal order"
+                }
+                    
+                }else{
+
                 //임시로 만들어준 주문을 정확하게 가격을 수정
                  await client.order.update({
                     where:{
@@ -122,9 +146,19 @@ export default{
                         total: orderFinalPrice+store.riderprice,
                     }
                 });
+
+                //다시 체크할수있게 정상으로 돌려놓음
+                originalCheck=false;
                 return{
                     ok :true,
-            };
+                };
+
+   
+
+                }
+
+
+
                 
             } catch (error) {
                 return{

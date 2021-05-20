@@ -34,6 +34,8 @@ exports.default = {
                 let orderFinalPrice = 0;
                 //유저가 선택한 값만 넣어줌
                 var orderItems = [];
+                // 정상적인 프로세스를 했는지 판단
+                let originalCheck = false;
                 //for문 들어가기전에 임시로 주문을 만들어줌
                 const order = yield client_1.default.order.create({
                     data: {
@@ -52,6 +54,11 @@ exports.default = {
                         }
                     });
                     if (!product) {
+                        // await client.order.delete({
+                        //     where: {
+                        //         id:order?.id,
+                        //     }
+                        //   })
                         return {
                             ok: false,
                             error: 'Product not found.',
@@ -100,24 +107,41 @@ exports.default = {
                             orderId: order.id,
                         }
                     });
+                    originalCheck = true;
                     //한개의 주문_아이템을 만들고 배열 초기화
                     orderItems = [];
                 }
-                //임시로 만들어준 주문을 정확하게 가격을 수정
-                yield client_1.default.order.update({
-                    where: {
-                        id: order.id,
-                    },
-                    data: {
-                        //stroeId: store.id,
-                        //userId:loggedInUser.id,
-                        //최종 가격에 + 배달비 추가해주기
-                        total: orderFinalPrice + store.riderprice,
-                    }
-                });
-                return {
-                    ok: true,
-                };
+                //정상적인 제품이아닌 (삭제되었더나 존재하지 않는 상품들)
+                if (originalCheck !== true) {
+                    yield client_1.default.order.delete({
+                        where: {
+                            id: order === null || order === void 0 ? void 0 : order.id,
+                        }
+                    });
+                    return {
+                        ok: false,
+                        error: "This is not a normal order"
+                    };
+                }
+                else {
+                    //임시로 만들어준 주문을 정확하게 가격을 수정
+                    yield client_1.default.order.update({
+                        where: {
+                            id: order.id,
+                        },
+                        data: {
+                            //stroeId: store.id,
+                            //userId:loggedInUser.id,
+                            //최종 가격에 + 배달비 추가해주기
+                            total: orderFinalPrice + store.riderprice,
+                        }
+                    });
+                    //다시 체크할수있게 정상으로 돌려놓음
+                    originalCheck = false;
+                    return {
+                        ok: true,
+                    };
+                }
             }
             catch (error) {
                 return {
