@@ -2,10 +2,10 @@ import client from "../../client"
 
 export default {
     Query :{
-        seeStores: (_, { adress }) =>    
+        seeStores: (_, { address }) =>    
             client.store.findMany({
                 where:{
-                    adress
+                    address
                 },
                 
             }),

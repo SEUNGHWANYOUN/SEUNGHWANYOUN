@@ -11,9 +11,14 @@ export default gql`
     updatedAt: String!
     bio: String
     avatar: String
-    adress: String
-    adress_road: String
-    adress_detail: String
+    address: String
+  
+    address_detail: String
+    zoneCode: String
+    roadAddress:  String
+    roadAddress_detail: String
+    sigunguCode: String
+ 
     expotoken: String
     role: String!
     photos: [Photo]

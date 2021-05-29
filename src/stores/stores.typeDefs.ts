@@ -4,8 +4,17 @@ export default gql`
   type Store{
     id: Int!
     name: String!
-    mainimg: String!
-    adress: String!
+    mainimg: String
+    address: String
+    address2: String
+    zoneCode: String
+    roadAddress: String
+    roadAddress2: String
+    sigunguCode: String
+    Latitude: Float
+    Longitude: Float
+    category: String
+    state: Int!
     phone: String!
     products: [Product]
     orders:   [Order]  
@@ -34,7 +43,8 @@ export default gql`
   type Order {
     id:           Int!
     total:        Int!
-    adress:       String!
+    address:       String!
+    address_detail: String!
     owner_commit: String
     rider_commit: String
     status:       String!

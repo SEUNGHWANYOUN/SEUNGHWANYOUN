@@ -4,15 +4,16 @@ import client from "../../client";
 import { protectedResolver } from "../users.utils";
 
 
-const resolverFn = async ( _,{ adress, adress_road, adress_detail },{ loggedInUser }) => {
+const resolverFn = async ( _,{ address,  address_detail,roadAddress,roadAddress_detail },{ loggedInUser }) => {
   const updatedUser = await client.user.update({
     where: {
       id: loggedInUser.id,
     },
     data: {
-        adress,
-        adress_road,
-        adress_detail,
+        address,
+        address_detail,
+        roadAddress,
+        roadAddress_detail
 
     },
   });

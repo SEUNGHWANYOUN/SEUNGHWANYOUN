@@ -3,7 +3,7 @@ import { protectedResolver } from "../../users/users.utils";
 
 export default {
     Mutation: {
-        editStore: protectedResolver(async(_,{id, adress,name, phone, mainimg}, {loggedInUser})=> {
+        editStore: protectedResolver(async(_,{id, address,name, phone, mainimg}, {loggedInUser})=> {
 
             const ok = await client.store.findFirst({
                 where :{
@@ -37,7 +37,7 @@ export default {
                     id,
                 },
                 data:{
-                    adress,
+                    address,
                     phone,
                     mainimg,
                     name,

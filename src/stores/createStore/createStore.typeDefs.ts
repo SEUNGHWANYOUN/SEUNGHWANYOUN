@@ -5,7 +5,7 @@ export default gql`
     createStore(
             name: String! 
             mainimg: Upload!
-            adress: String
+            address: String
             phone: String
     ): MutationResponse!
   }

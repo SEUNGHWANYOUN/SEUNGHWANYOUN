@@ -35,9 +35,13 @@ model User {
   password  String
   bio       String?
   avatar    String?
-  adress    String?
-  adress_road      String?
-  adress_detail    String?
+  address    String?
+  address_detail String?
+  zoneCode String?
+  roadAddress  String?
+  roadAddress_detail String?
+  sigunguCode String?
+  
 
   expotoken String?   
   role      Role      @default(USER)
@@ -123,8 +127,17 @@ model Message {
 model Store {
   id        Int      @id @default(autoincrement())
   name      String
-  mainimg   String
-  adress    String
+  mainimg   String?
+  address    String?
+  address_detail   String?
+  zoneCode String?
+  roadAddress String?
+  roadAddress_detail String?
+  sigunguCode String?
+  Latitude Float?
+  Longitude Float?
+  category String?
+  state Int @default(0)
   phone     String
   user      User     @relation(fields: [userId], references: [id])
   userId    Int    
@@ -160,7 +173,8 @@ model Store {
     model Order {
     id         Int      @id @default(autoincrement())
     total      Int
-    adress    String   
+    address    String   
+    address_detail String
     owner_commit String?
     rider_commit String?
     status     OrderStatus @default(Pending)

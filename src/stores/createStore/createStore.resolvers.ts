@@ -4,7 +4,7 @@ import { uploadToS3 } from "../../shared/shared.utils";
 
 export default {
     Mutation: {
-        createStore:protectedResolver(async(_, {name, mainimg, phone, adress }, { loggedInUser }) => {
+        createStore:protectedResolver(async(_, {name, mainimg, phone, address }, { loggedInUser }) => {
         try {   
 
             const fileUrl = await uploadToS3(mainimg, loggedInUser.id, "stores");
@@ -13,7 +13,7 @@ export default {
                         name,
                         mainimg : fileUrl,
                         phone,
-                        adress,
+                        address,
                     
                     user: {
                         connect :{

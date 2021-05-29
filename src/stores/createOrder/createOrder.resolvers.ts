@@ -33,7 +33,8 @@ export default{
                         storeId: store.id,
                         userId:loggedInUser.id,
                         total: orderFinalPrice,
-                        adress:loggedInUser.adress,
+                        address:loggedInUser.address,
+                        address_detail:loggedInUser.address_detail,
                         owner_commit,
                         rider_commit,
                     }
