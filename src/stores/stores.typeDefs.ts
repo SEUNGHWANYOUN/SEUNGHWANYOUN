@@ -48,8 +48,9 @@ export default gql`
     owner_commit: String
     rider_commit: String
     status:       String!
-    storeId:      Int!
-    userId:       Int!
+    # storeId:      Int!
+    store:        Store!
+    user:         User!
     riderId:      Int
     order_items: [Order_Item]
     createdAt:   String!

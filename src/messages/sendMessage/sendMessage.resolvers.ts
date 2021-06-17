@@ -66,7 +66,9 @@ export default {
                 id: loggedInUser.id,
               },
             },
+            
           },
+          
         });
         console.log(message);
         pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...message } });

@@ -13,7 +13,8 @@ export default {
      },
 
      Order :{
-
+          user: ({ id }) => client.order.findUnique({ where: { id } }).user(),
+          //user: ({ userId }) => client.order.findUnique({ where: { id :userId } }).user(),
           order_items: ({ id }) => client.order.findUnique({ where: { id } }).order_items(),
      },
 

@@ -30,8 +30,20 @@ export default{
                 //for문 들어가기전에 임시로 주문을 만들어줌
                 const order = await client.order.create({
                     data:{        
-                        storeId: store.id,
-                        userId:loggedInUser.id,
+       
+                        // storeId: store.id, 
+                        store :{
+                            connect: {
+                              id: store.id,
+                            },
+                          },
+    
+                        user: {
+                            connect: {
+                              id: loggedInUser.id,
+                            },
+                          },
+                        // userId:loggedInUser.id,
                         total: orderFinalPrice,
                         address:loggedInUser.address,
                         address_detail:loggedInUser.address_detail,
@@ -143,6 +155,11 @@ export default{
                         //stroeId: store.id,
                         //userId:loggedInUser.id,
 
+                        user: {
+                            connect: {
+                              id: loggedInUser.id,
+                            },
+                          },
                         //최종 가격에 + 배달비 추가해주기
                         total: orderFinalPrice+store.riderprice,
                     }
