@@ -17,7 +17,8 @@ export default gql`
     state: Int!
     phone: String!
     products: [Product]
-    orders:   [Order]  
+    orders:   [Order] 
+    user:      User! 
     userId:    Int!
     minprice: Int!
     riderprice: Int!
@@ -48,9 +49,10 @@ export default gql`
     owner_commit: String
     rider_commit: String
     status:       String!
-    # storeId:      Int!
+    storeId:      Int
     store:        Store!
     user:         User!
+    userId:       Int
     riderId:      Int
     order_items: [Order_Item]
     createdAt:   String!
