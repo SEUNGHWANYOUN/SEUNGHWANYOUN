@@ -8,7 +8,9 @@ export default {
     sendMessage: protectedResolver(
       async (_, { payload, roomId, userId }, { loggedInUser }) => {
         let room = null;
+        console.log("메시지" +payload +"방번호"+roomId+"유저아이디"+userId);
         if (userId) {
+          console.log("유저 아이디 실행됨?");
           const user = await client.user.findUnique({
             where: {
               id: userId,
@@ -37,6 +39,7 @@ export default {
               },
             },
           });
+          console.log("durl 실행됨?");
         } else if (roomId) {
           room = await client.room.findUnique({
             where: {
@@ -72,11 +75,14 @@ export default {
         });
         console.log(message);
         pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...message } });
+
+        console.log("여기까지 실행됨?");
         return {
           ok: true,
           id: message.id,
         };
       }
     ),
+    
   },
 };

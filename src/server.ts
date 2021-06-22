@@ -1,6 +1,6 @@
 require("dotenv").config();
 import  http from "http";
-import express from "express";
+import express, { json } from "express";
 import logger from "morgan";
 import { ApolloServer, gql } from "apollo-server-express";
 import { typeDefs, resolvers } from "./schema";
@@ -27,9 +27,11 @@ const apollo = new ApolloServer({
   playground : true,
   introspection : true,
   context: async (ctx) => {
+    //console.log(ctx.req);
     if (ctx.req) {
       return {
         loggedInUser: await getUser(ctx.req.headers.token),
+      
       };
     } else {
       const {
@@ -40,12 +42,35 @@ const apollo = new ApolloServer({
       };
     }
   },
+
+  //메세지를 읽는 거에 대한 인증 처리 로그인된 유저가 채팅을 사용한 유저가 맞는지 검사
   subscriptions: {
     onConnect: async ( token ) => {
+      //console.log(token);
       if (!token) {
         throw new Error("You can't listen.");
       }
-      const loggedInUser = await getUser(token);
+
+      //JSON 값을 전환해 주는 과정
+     const token_string = JSON.stringify(token);
+     const token_parse = JSON.parse(token_string).token;
+
+     //console.log("token string 으로 전환" +token_string);
+     //console.log(tokent_pase)
+
+
+    //token을 json 값으로 전달해줘서 정상적으로 유저의 값을 구하지 못함
+     //const loggedInUser = await getUser(token);
+
+     //String 값으로 전환해서 넣어주기
+      const loggedInUser = await getUser(token_parse);
+
+
+
+      
+     // console.log("인증된 유저의 정보값")
+      //값널처리
+      //console.log(loggedInUser)
       return {
         loggedInUser,
       };
