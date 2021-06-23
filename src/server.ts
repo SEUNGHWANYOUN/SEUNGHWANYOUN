@@ -45,15 +45,17 @@ const apollo = new ApolloServer({
 
   //메세지를 읽는 거에 대한 인증 처리 로그인된 유저가 채팅을 사용한 유저가 맞는지 검사
   subscriptions: {
-    onConnect: async ( token ) => {
-      //console.log(token);
+    // onConnect: async ( token ) => {
+      //Jsone string으로
+      onConnect: async ( {token}:{token?:string} ) => {
+      console.log(token);
       if (!token) {
         throw new Error("You can't listen.");
       }
 
       //JSON 값을 전환해 주는 과정
-     const token_string = JSON.stringify(token);
-     const token_parse = JSON.parse(token_string).token;
+     //const token_string = JSON.stringify(token);
+     //const token_parse = JSON.parse(token_string).token;
 
      //console.log("token string 으로 전환" +token_string);
      //console.log(tokent_pase)
@@ -63,11 +65,7 @@ const apollo = new ApolloServer({
      //const loggedInUser = await getUser(token);
 
      //String 값으로 전환해서 넣어주기
-      const loggedInUser = await getUser(token_parse);
-
-
-
-      
+      const loggedInUser = await getUser(token);
      // console.log("인증된 유저의 정보값")
       //값널처리
       //console.log(loggedInUser)
