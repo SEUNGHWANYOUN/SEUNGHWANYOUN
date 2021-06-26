@@ -46,9 +46,9 @@ const apollo = new ApolloServer({
   //메세지를 읽는 거에 대한 인증 처리 로그인된 유저가 채팅을 사용한 유저가 맞는지 검사
   subscriptions: {
     // onConnect: async ( token ) => {
-      //Jsone string으로
+      //Jsone string으로 해당 타입이 null일수도 있음을 암시
       onConnect: async ( {token}:{token?:string} ) => {
-      console.log(token);
+      //console.log(token);
       if (!token) {
         throw new Error("You can't listen.");
       }
