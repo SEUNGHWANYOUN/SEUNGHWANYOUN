@@ -9,6 +9,7 @@ export default {
       async (_, { payload, roomId, userId }, { loggedInUser }) => {
         let room = null;
         console.log("메시지" +payload +"방번호"+roomId+"유저아이디"+userId);
+        
         if (userId) {
           console.log("유저 아이디 실행됨?");
           const user = await client.user.findUnique({
