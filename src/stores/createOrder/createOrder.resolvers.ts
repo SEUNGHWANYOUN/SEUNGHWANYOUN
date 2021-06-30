@@ -1,12 +1,15 @@
 import { json } from "express";
 import client from "../../client";
 import { protectedResolver } from "../../users/users.utils";
+import pubsub from "../../pubsub"
+import { NEW_ORDER } from "../../constants";
 
 export default{
 
     
     Mutation: {
         createOrder: protectedResolver(async(_,{ input: {storeId, items, owner_commit, rider_commit }}, {loggedInUser})=>{
+            //const order
             try {
             const store = await client.store.findUnique(({
                 where: {
@@ -147,7 +150,7 @@ export default{
                 }else{
 
                 //임시로 만들어준 주문을 정확하게 가격을 수정
-                 await client.order.update({
+                 const update_order=await client.order.update({
                     where:{
                         id: order.id,
                     },
@@ -164,6 +167,10 @@ export default{
                         total: orderFinalPrice+store.riderprice,
                     }
                 });
+
+                console.log(update_order);
+                //새로운 주문이 생기면
+                pubsub.publish (NEW_ORDER, {orderUpdates:{...update_order}} );
 
                 //다시 체크할수있게 정상으로 돌려놓음
                 originalCheck=false;
