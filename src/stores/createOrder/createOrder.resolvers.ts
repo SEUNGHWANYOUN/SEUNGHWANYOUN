@@ -168,7 +168,7 @@ export default{
                     }
                 });
 
-                console.log(update_order);
+                //console.log(update_order);
                 //새로운 주문이 생기면
                 pubsub.publish (NEW_ORDER, {orderUpdates:{...update_order}} );
 

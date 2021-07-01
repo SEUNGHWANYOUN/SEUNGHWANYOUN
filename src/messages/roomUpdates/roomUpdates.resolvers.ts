@@ -25,6 +25,7 @@ export default {
         }
         return withFilter(
           () => pubsub.asyncIterator(NEW_MESSAGE),
+          
           async ({ roomUpdates }, { id }, { loggedInUser }) => {
             if (roomUpdates.roomId === id) {
               const room = await client.room.findFirst({
