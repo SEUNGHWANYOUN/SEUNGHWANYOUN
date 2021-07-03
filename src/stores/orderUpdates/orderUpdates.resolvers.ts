@@ -17,7 +17,7 @@ export default {
             //     id: context.loggedInUser.id,
             //   },
             // },
-            id: args.storeId,
+            id: args.id,
           },
           select: {
             id: true,
@@ -32,12 +32,12 @@ export default {
         
         return withFilter(
           () => pubsub.asyncIterator(NEW_ORDER),
-          async ({ orderUpdates }, { storeId }, { loggedInUser }) => {
+          async ({ orderUpdates }, { id }, { loggedInUser }) => {
             //검증하는 절차 볼 스토어의 값과 업데이트하는 내요이 같으면 
             console.log("여가꺼자 오")
             console.log(orderUpdates);
             console.log(orderUpdates.id);
-            if (orderUpdates.storeId === storeId) {
+            if (orderUpdates.storeId === id) {
               const orders = await client.store.findFirst({
                 where: {
                   // id,
@@ -46,7 +46,7 @@ export default {
                   //     id: loggedInUser.id,
                   //   },
                   // },
-                  id: args.storeId,
+                  id: args.id,
                 },
                 select: {
                   id: true,
