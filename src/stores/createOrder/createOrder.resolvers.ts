@@ -30,11 +30,12 @@ export default{
                 // 정상적인 프로세스를 했는지 판단
                 let originalCheck = false;
 
+                console.log("여기까지옴?");
                 //for문 들어가기전에 임시로 주문을 만들어줌
                 const order = await client.order.create({
                     data:{        
        
-                        // storeId: store.id, 
+                        //storeId: store.id, 
                         store :{
                             connect: {
                               id: store.id,
@@ -46,7 +47,7 @@ export default{
                               id: loggedInUser.id,
                             },
                           },
-                        // userId:loggedInUser.id,
+                        //userId:loggedInUser.id,
                         total: orderFinalPrice,
                         address:loggedInUser.address,
                         address_detail:loggedInUser.address_detail,
@@ -54,6 +55,7 @@ export default{
                         rider_commit,
                     }
                 });
+                console.log("여기까지옴?22");
                 
                 for (const item of items) {
                     const product = await client.product.findFirst({
@@ -118,7 +120,7 @@ export default{
                 }
                     //총 합산한급액
                     orderFinalPrice = orderFinalPrice + productFinalPrice;
-                    //console.log(orderItems);
+                    console.log(orderItems);
 
        
                     //주문한거에 맞는 메뉴내용을 만들어줘서 연결해 줍니다~
@@ -188,7 +190,7 @@ export default{
             } catch (error) {
                 return{
                     ok :false,
-                    error: "can't create order"
+                    error: "can't create order"+error
                 
             };
                 

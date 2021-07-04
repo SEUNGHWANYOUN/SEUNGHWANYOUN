@@ -19,16 +19,20 @@ enum Role {
 }
 
 enum OrderStatus {
-  Pending
-  Cooking
-  Cooked 
-  PickedUp 
-  Delivered 
+ Pending
+ Apccept
+ Collecting
+ CC 
+ Washing
+ WC
+ Delivery 
+ DC
+ Cooking
 }
 
 model User {
   id        Int       @id @default(autoincrement())
-  firstName String
+  firstName String?
   lastName  String?
   username  String    @unique
   email     String    @unique
