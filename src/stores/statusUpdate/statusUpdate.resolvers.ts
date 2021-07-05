@@ -64,6 +64,8 @@ export default {
 
         //   }
 
+        //ok로 오면 화면 재갱신
+
           return{
               ok:true
           }
