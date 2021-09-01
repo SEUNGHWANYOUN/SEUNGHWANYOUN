@@ -4,9 +4,7 @@ import { protectedResolver } from "../../users/users.utils";
 import pubsub from "../../pubsub"
 import { NEW_ORDER } from "../../constants";
 
-export default{
-
-    
+export default{ 
     Mutation: {
         createOrder: protectedResolver(async(_,{ input: {storeId, items, owner_commit, rider_commit }}, {loggedInUser})=>{
             //const order
@@ -47,6 +45,8 @@ export default{
                               id: loggedInUser.id,
                             },
                           },
+
+                          
                         //userId:loggedInUser.id,
                         total: orderFinalPrice,
                         address:loggedInUser.address,

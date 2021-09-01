@@ -33,6 +33,7 @@
     "express": "^4.17.1",
     "fs-capacitor": "^6.2.0",
     "graphql": "^15.5.0",
+    "graphql-redis-subscriptions": "2.4.0",
     "graphql-tools": "^7.0.2",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0"

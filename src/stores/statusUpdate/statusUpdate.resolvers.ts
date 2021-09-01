@@ -41,6 +41,7 @@ export default {
                     data: {
                         riderId: loggedInUser.id,
                     }
+                    
                 })
             }
 
@@ -58,8 +59,6 @@ export default {
             }
         }
         
-
-
         //상태값 변경
         if(status==="Pending"){
             status = "Apccept"

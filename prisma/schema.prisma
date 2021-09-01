@@ -187,6 +187,7 @@ model Store {
     userId    Int
     store     Store @relation(fields: [storeId], references: [id])
     storeId   Int
+    //rider     User1 @relation(fields: [riderId], references: [id])
     riderId   Int?
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
