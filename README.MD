@@ -1,102 +1,38 @@
-# Washer and Dryer 
+<p>
+  <a href="http://blog.cowkite.com/" target="_blank"><img src="https://img.shields.io/badge/Blog-DD0B78?style=flat-square&logo=GitHub%20Sponsors&logoColor=white"/></a>
+  <a href="mailto:iscowkite@gmail.com" target="_blank"><img src="https://img.shields.io/badge/iscowkite@gmail.com-EA4335?style=flat-square&logo=Gmail&logoColor=white"/></a>
+  <a href="https://www.linkedin.com/in/cowkite/" target="_blank"><img src="https://img.shields.io/badge/SoyeonKim-0A66C2?style=flat-square&logo=Linkedin&logoColor=white"/></a>
+  <a href="https://twitter.com/cowkite" target="_blank"><img src="https://img.shields.io/badge/cowkite-1DA1F2?style=flat-square&logo=Twitter&logoColor=white"/></a>
+</p>
 
-# prisma2
-# check file name (resolvers, typeDefs)
+<p>
+  👋&nbsp; Hi there! I'm <b>mobile app developer</b> using Android and iOS. 🚀<br/>
+  Sometimes I develop cross-platforms like ReactNative or Flutter, but prefer native. 💖<br/><br/>
+  I enjoy hiking, swimming, dive and surf. ⛰ 🏄<br/>
+  I hope to develop every beautiful things. ✨ <br/><br/>
+</p>
 
-## User:
+### 💪 Skills
+#### Platforms & Languages
+<p>
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
+  <img src="https://img.shields.io/badge/iOS-000000?style=flat-square&logo=iOS&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&logo=React&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=Flutter&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Cordova-E8E8E8?style=flat-square&logo=Apache%20Cordova&logoColor=black"/>
+</p>
+<p>
+  <img src="https://img.shields.io/badge/Kotlin-0095D5?style=flat-square&logo=Kotlin&logoColor=white"/> 
+  <img src="https://img.shields.io/badge/Swift-FA7343?style=flat-square&logo=Swift&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
+</p>
 
-- [x] Create Account
-- [x] See Profile
-- [x] Login
-- [x] Edit Profile
-- [x] Change Avatar (Image Upload)
-- [x] Follow User
-- [x] Unfollow User
-- [x] See Followers w/ Pagination
-- [x] See Following w/ Pagination
-- [x] Computed Fields
-- [x] Search Users
-- [ ] FCM Foken add
-- [ ] Phone Number add
-- [ ] MinRider add
-- [x] Orders relation
-
-
-## Photos
-
-- [x] Upload Photo (Parse #)
-- [x] See Photo
-- [x] See Hashtag
-- [x] Search Photos
-- [x] Edit Photo
-- [x] Like / Unlike Photo
-- [x] See Photo Likes
-- [x] See Feed
-- [x] See Photo Comments
-- [x] Delete Photo
-
-## Comments
-
-- [x] Comment on Photo
-- [x] Delete Comment
-- [x] Edit Comment
-
-## Refactor
-
-- [x] Mutation Responses
-
-## Extras
-
-- [x] S3 Image Upload
-
-## DMs
-
-- [x] See Rooms
-- [x] Send Message (Create Room)
-- [x] See Room
-- [x] Computed Fields
-- [x] See (Read) Message
-- [x] Realtime Messages
-
-
-## Store
-- [x] See Store
-- [x] See Stores
-- [x] Create Store 1(user) : 1(store)
-- [x] edit Store
-- [x] file Upload
-- [ ] data, time update
-- [ ] descripton [ {"ceo": "dsa"}, {"number" :"321-321-3212"},]
-- [x] Orders relation 
-- [x] minprice
-
-## Product
-- [x] See Product
-- [x] See Products
-- [x] Create Product 1:n
-- [x] edit Product
-- [x] file Upload
-- [ ] Edit Product
-- [ ] options [{"name": "steam"}, {"extra": 1000}]
-- [ ] Relation to Order_item
-
-## Order (장바구니)
-
-- [ ] Create Order
-- [ ] See Oder
-- [ ] 주문전 해당가게의 제품만 담을 수 있음 (임시로 데이터 저장하지 않음)
-- [ ] 주문으로 상태 변경시 -> 가게 주인에게 상태 메세지 전달
-- [ ] Cancel Order 
-- [ ] 최소금액 이하 구매시 체크
-- [ ] 임시생성 주문값이 0 인 값은 조회 되지 않게 예외 처리 검색
-
-## Order_item
-
-- [ ] Create Order
-- [ ] 
-
-## 장바구니
-- [ ] 장바구니 만들기
--
-- [ ] 
-
+#### Tools
+<p>
+  <img src="https://img.shields.io/badge/ReactiveX-B7178C?style=flat-square&logo=ReactiveX&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Realm-39477F?style=flat-square&logo=Realm&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Bitrise-683D87?style=flat-square&logo=Bitrise&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
+</p>
