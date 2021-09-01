@@ -40,4 +40,5 @@
 #### Site
 
 https://play.google.com/store/apps/dev?id=5750953430579186785<br>
+https://apps.apple.com/us/developer/seunghwan-youn/id1447745756<br>
 https://duckring.com<br>
