@@ -30,6 +30,8 @@
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
 </p>
 
+github-readme-stats.vercel.app/api?username={SEUNGHWANYOUN}&show_icons=true&theme=dark
+
 #### Site
 
 https://play.google.com/store/apps/dev?id=5750953430579186785<br>
