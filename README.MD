@@ -30,7 +30,7 @@
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
 </p>
 
-github-readme-stats.vercel.app/api?username={SEUNGHWANYOUN}&show_icons=true&theme=dark
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=SEUNGHWANYOUN)](https://github.com/anuraghazra/github-readme-stats)
 
 #### Site
 
